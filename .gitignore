@@ -53,3 +53,13 @@ dkms.conf
 
 Debug/
 Release/
+streamlit/.venv/
+streamlit/__pycache__/
+streamlit/*.pyc
+streamlit/*.pyo
+streamlit/*.pyd
+streamlit/*.log
+streamlit/*.db
+streamlit/*.db-shm
+streamlit/.streamlit/secrets.toml
+
