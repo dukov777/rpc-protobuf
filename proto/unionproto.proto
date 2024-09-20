@@ -7,20 +7,28 @@
 
 syntax = "proto2";
 
+enum AccessMode {
+  READ_ONLY = 0;
+  READ_WRITE = 1;
+}
+
 message MsgType1
 {
     required int32 value = 1;
+    optional AccessMode access = 2 [default = READ_ONLY];
 }
 
 message MsgType2
 {
     required bool value = 1;
+    optional AccessMode access = 2 [default = READ_ONLY];
 }
 
 message MsgType3
 {
     required int32 value1 = 1;
     required int32 value2 = 2;
+    optional AccessMode access = 3 [default = READ_ONLY];
 }
 
 message UnionMessage

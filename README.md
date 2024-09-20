@@ -1,5 +1,17 @@
 # rpc-protobuf
 
+## generating proto serializers
+
+### python 
+```bash
+nanopb/generator/protoc  --python_out=./streamlit/. proto/unionproto.proto
+```
+
+### c
+```bash
+nanopb/generator/protoc  --nanopb_out=./Core/. proto/unionproto.proto 
+```
+
 ## Setup Streamlit enviorment
 To recreate your environment from `requirements.txt`, follow these steps:
 
