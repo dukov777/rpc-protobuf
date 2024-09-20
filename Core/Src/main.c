@@ -60,7 +60,7 @@ UART_HandleTypeDef huart2;
 
 #include <pb_decode.h>
 #include <pb_common.h>
-#include "proto/unionproto.pb.h"
+#include "unionproto.pb.h"
 
 /* This function reads manually the first tag from the stream and finds the
  * corresponding message type. It doesn't yet decode the actual message.
@@ -112,9 +112,9 @@ void send_response(UART_HandleTypeDef *huart, uint8_t response_type)
 }
 
 
-volatile MsgType1 msg1 = {};
-volatile MsgType2 msg2 = {};
-volatile MsgType3 msg3 = {};
+MsgType1 msg1 = {};
+MsgType2 msg2 = {};
+MsgType3 msg3 = {};
 
 bool process_message(uint8_t *buffer, size_t length)
 {
@@ -140,16 +140,6 @@ bool process_message(uint8_t *buffer, size_t length)
 
     return status;
 }
-
-//void receive_protobuf_message(UART_HandleTypeDef *huart)
-//{
-//    uint8_t buffer[512];
-//    size_t size = sizeof(buffer);
-//    if (receive_message(huart, buffer, &size))
-//    {
-//    	process_message(buffer, size);
-//    }
-//}
 
 void receive_protobuf_message(UART_HandleTypeDef *huart)
 {
@@ -211,9 +201,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  char msg[] = "Hello from STM32!\r\n";
-  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
-  HAL_Delay(1000); // Wait 1 second
   while (1)
   {
 	  receive_protobuf_message(&huart2);

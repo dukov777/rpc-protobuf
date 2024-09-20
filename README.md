@@ -9,7 +9,7 @@ nanopb/generator/protoc  --python_out=./streamlit/. proto/unionproto.proto
 
 ### c
 ```bash
-nanopb/generator/protoc  --nanopb_out=./Core/. proto/unionproto.proto 
+nanopb/generator/nanopb_generator.py --strip-path --output-dir=./Core --cpp-descriptors proto/unionproto.proto 
 ```
 
 ## Setup Streamlit enviorment

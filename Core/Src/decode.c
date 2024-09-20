@@ -7,7 +7,7 @@
 
 #include <pb_decode.h>
 #include <pb_common.h>
-#include "proto/unionproto.pb.h"
+#include "unionproto.pb.h"
 
 /* This function reads manually the first tag from the stream and finds the
  * corresponding message type. It doesn't yet decode the actual message.
@@ -52,44 +52,3 @@ bool decode_unionmessage_contents(pb_istream_t *stream, const pb_msgdesc_t *mess
     pb_close_string_substream(stream, &substream);
     return status;
 }
-
-//int main()
-//{
-//    /* Read the data into buffer */
-//    uint8_t buffer[512];
-//    size_t count = fread(buffer, 1, sizeof(buffer), stdin);
-//    pb_istream_t stream = pb_istream_from_buffer(buffer, count);
-//
-//    const pb_msgdesc_t *type = decode_unionmessage_type(&stream);
-//    bool status = false;
-//
-//    if (type == MsgType1_fields)
-//    {
-//        MsgType1 msg = {};
-//        status = decode_unionmessage_contents(&stream, MsgType1_fields, &msg);
-//        printf("Got MsgType1: %d\n", msg.value);
-//    }
-//    else if (type == MsgType2_fields)
-//    {
-//        MsgType2 msg = {};
-//        status = decode_unionmessage_contents(&stream, MsgType2_fields, &msg);
-//        printf("Got MsgType2: %s\n", msg.value ? "true" : "false");
-//    }
-//    else if (type == MsgType3_fields)
-//    {
-//        MsgType3 msg = {};
-//        status = decode_unionmessage_contents(&stream, MsgType3_fields, &msg);
-//        printf("Got MsgType3: %d %d\n", msg.value1, msg.value2);
-//    }
-//
-//    if (!status)
-//    {
-//        printf("Decode failed: %s\n", PB_GET_ERROR(&stream));
-//        return 1;
-//    }
-//
-//    return 0;
-//}
-
-
-
